@@ -1,11 +1,12 @@
 import { css } from "@emotion/css";
-import { AddCircleFilled, EmailFilled } from "@navikt/ds-icons";
+import { AddCircleFilled } from "@navikt/ds-icons";
 import { Button, ToggleGroup } from "@navikt/ds-react";
 import * as React from "react";
 import { useState } from "react";
 
 import { createTeam, mapProductTeamToFormValue } from "../../api";
 import { getSlackUserByEmail } from "../../api/ContactAddressApi";
+import { ContactTeamsByEmail } from "../../components/ContactTeamsByEmail";
 import { PageHeader } from "../../components/PageHeader";
 import ListView from "../../components/team/ListView";
 import ModalTeam from "../../components/team/ModalTeam";
@@ -17,7 +18,6 @@ import { useAllTeams } from "../../hooks";
 import { useDashboard } from "../../hooks";
 import { Group, userHasGroup, useUser } from "../../hooks";
 import { TeamsTable } from "./TeamsTable";
-import { ContactTeamsByEmail } from "../../components/ContactTeamsByEmail";
 
 const TeamListPage = () => {
   const user = useUser();

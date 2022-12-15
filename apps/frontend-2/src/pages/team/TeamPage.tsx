@@ -1,7 +1,6 @@
 import { css } from "@emotion/css";
 import { EditFilled, FileFilled, Profile, Table } from "@navikt/ds-icons";
 import SvgBellFilled from "@navikt/ds-icons/esm/BellFilled";
-import SvgEmailFilled from "@navikt/ds-icons/esm/EmailFilled";
 import { Button, Heading } from "@navikt/ds-react";
 import dayjs from "dayjs";
 import sortBy from "lodash/sortBy";
@@ -15,6 +14,7 @@ import { getProcessesForTeam } from "../../api/integrationApi";
 import DescriptionSection from "../../components/common/DescriptionSection";
 import Members from "../../components/common/Members";
 import { ResourceInfoLayout } from "../../components/common/ResourceInfoContainer";
+import { ContactTeamsByEmail } from "../../components/ContactTeamsByEmail";
 import { LargeDivider } from "../../components/Divider";
 import { ErrorMessageWithLink } from "../../components/ErrorMessageWithLink";
 import { LastModifiedBy } from "../../components/LastModifiedBy";
@@ -30,7 +30,6 @@ import { Group, userHasGroup, userIsMemberOfTeam, useUser } from "../../hooks";
 import { processLink } from "../../util/config";
 import { intl } from "../../util/intl/intl";
 import { MembersTable } from "./MembersTable";
-import { ContactTeamsByEmail } from "../../components/ContactTeamsByEmail";
 
 const TeamPage = () => {
   const { teamId } = useParams<{ teamId: string }>();
