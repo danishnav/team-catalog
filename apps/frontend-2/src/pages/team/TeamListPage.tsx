@@ -17,13 +17,13 @@ import { useAllTeams } from "../../hooks";
 import { useDashboard } from "../../hooks";
 import { Group, userHasGroup, useUser } from "../../hooks";
 import { TeamsTable } from "./TeamsTable";
+import { ContactTeamsByEmail } from "../../components/ContactTeamsByEmail";
 
 const TeamListPage = () => {
   const user = useUser();
   const [status, setStatus] = useState<Status>(Status.ACTIVE);
   const [showTable, setShowTable] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [showContactAllModal, setShowContactAllModal] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
   const teamQuery = useAllTeams({ status });
@@ -106,15 +106,7 @@ const TeamListPage = () => {
               {showTable ? "Listevisning" : "Tabellvisning"}
             </Button>
             <TeamExport />
-            <Button
-              disabled
-              icon={<EmailFilled />}
-              onClick={() => setShowContactAllModal(true)}
-              size="medium"
-              variant="secondary"
-            >
-              Kontakt alle team
-            </Button>
+            <ContactTeamsByEmail productTeams={teams} />
 
             {userHasGroup(user, Group.ADMIN) && (
               <Button icon={<AddCircleFilled />} onClick={() => setShowModal(true)} size="medium" variant="secondary">
@@ -135,8 +127,6 @@ const TeamListPage = () => {
       />
 
       {showTable && <TeamsTable teams={teams} />}
-      {/* Må hente inn modal for å kontakte alle teams også -- */}
-      {/* <ModalContactAllTeams teams={teamList} /> */}
     </React.Fragment>
   );
 };

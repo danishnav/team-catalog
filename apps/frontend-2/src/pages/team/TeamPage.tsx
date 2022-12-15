@@ -30,6 +30,7 @@ import { Group, userHasGroup, userIsMemberOfTeam, useUser } from "../../hooks";
 import { processLink } from "../../util/config";
 import { intl } from "../../util/intl/intl";
 import { MembersTable } from "./MembersTable";
+import { ContactTeamsByEmail } from "../../components/ContactTeamsByEmail";
 
 const TeamPage = () => {
   const { teamId } = useParams<{ teamId: string }>();
@@ -123,9 +124,7 @@ const TeamPage = () => {
                 {intl.edit}
               </Button>
             )}
-            <Button disabled icon={<SvgEmailFilled aria-hidden />} size="medium" variant="secondary">
-              Kontakt team
-            </Button>
+            <ContactTeamsByEmail productTeams={[team]} />
             <Button disabled icon={<SvgBellFilled aria-hidden />} size="medium" variant="secondary">
               Bli varslet
             </Button>
